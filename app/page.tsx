@@ -19,7 +19,15 @@ export default function Home() {
         ]}
       >
         <Canvas shadows camera={{ fov: 40 }}>
-          <Environment preset="city" />
+          <Environment
+            files={"/textures/hdr.hdr"}
+            background
+            ground={{
+              height: -100,
+              radius: 10,
+              scale: 0,
+            }}
+          />
           <Suspense fallback={null}>
             <MainScene />
           </Suspense>
