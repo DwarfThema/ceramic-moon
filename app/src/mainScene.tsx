@@ -16,7 +16,7 @@ export default function MainScene() {
         <Ground>
           <mesh position={[0, 1, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={10}>
             <planeGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={"black"} />
+            <meshStandardMaterial color={"white"} />
           </mesh>
         </Ground>
         <Ocean />
