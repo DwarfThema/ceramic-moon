@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Mesh } from "three";
 import { useFrame } from "@react-three/fiber";
 import Ocean from "./ocean";
+import Stars from "./star";
 
 export default function MainScene() {
   console.log(-Math.PI / 2);
@@ -20,7 +21,7 @@ export default function MainScene() {
           </mesh>
         </Ground>
         <Ocean />
-        <Player pos={{ x: 0, y: 2, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
+        <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
       </Physics>
     </>
   );
