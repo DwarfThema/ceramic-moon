@@ -34,9 +34,9 @@ export default function Home() {
           <EffectComposer>
             <Vignette eskil={false} offset={0.05} darkness={0.7} />
             <Bloom
-              intensity={0.7}
-              luminanceThreshold={0.8}
-              luminanceSmoothing={1.5}
+              luminanceThreshold={0.5}
+              luminanceSmoothing={3}
+              intensity={2}
             />
           </EffectComposer>
         </Canvas>
