@@ -35,7 +35,7 @@ export default function Ocean() {
   );
   useFrame((state, delta) => {
     if (ref.current) {
-      ref.current.material.uniforms.time.value += delta;
+      ref.current.material.uniforms.time.value += delta / 8;
     }
   });
   return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />;
