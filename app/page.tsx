@@ -26,11 +26,7 @@ export default function Home() {
       >
         <Stats />
         <Canvas shadows camera={{ fov: 40 }}>
-          <Environment
-            files={"/textures/rooftop_night_1k.hdr"}
-            background
-            blur={0.4}
-          />
+          <Environment files={"/textures/hdr.hdr"} background blur={0.4} />
           <fog attach="fog" args={["#202030", 10, 5000]} />
           <Suspense fallback={null}>
             <MainScene />
