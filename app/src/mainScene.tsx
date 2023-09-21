@@ -19,7 +19,7 @@ export default function MainScene() {
           </mesh>
         </Ground>
         <Ocean />
-        <Gltf src="/models/moon.gltf" position={[0, 30, -370]} scale={50} />
+        <Gltf src="/models/moon.gltf" position={[0, 60, -870]} scale={110} />
         <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
