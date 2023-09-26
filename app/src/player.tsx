@@ -78,11 +78,8 @@ export function Player({
 
     // Jumping
     const world = rapier?.world;
-    const ray = world?.castRay(
-      new RAPIER.Ray(position, { x: 0, y: -1, z: 0 }),
-      1.599,
-      false
-    );
+    const newRay = new RAPIER.Ray(position, { x: 0, y: -1, z: 0 });
+    const ray = world?.castRay(newRay, 1.599, false);
     const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.7;
 
     if (jump && grounded && jumping) {

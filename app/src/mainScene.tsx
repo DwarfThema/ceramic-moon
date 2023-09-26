@@ -3,17 +3,45 @@ import { Ground } from "./ground";
 import { Player } from "./player";
 import Ocean from "./ocean";
 import { useControls } from "leva";
-import { Cloud, Gltf, OrbitControls, Stars } from "@react-three/drei";
+import {
+  BakeShadows,
+  Cloud,
+  Gltf,
+  OrbitControls,
+  SoftShadows,
+  Stars,
+} from "@react-three/drei";
 import Ceramics from "./ceramics";
+import { useEffect, useMemo, useRef } from "react";
+import { PointLight, PointLightShadow, Vector2 } from "three";
+import { vector2 } from "maath";
 
 export default function MainScene() {
   return (
     <>
-      <pointLight position={[0, 25, -5]} intensity={2000} />
+      <BakeShadows />
+      <SoftShadows size={10} focus={0} samples={20} />
+      <directionalLight
+        castShadow
+        position={[2.5, 8, 5]}
+        intensity={1.5}
+        shadow-mapSize={1024 * 2}
+        shadow-bias={-0.001}
+      >
+        <orthographicCamera
+          attach="shadow-camera"
+          args={[-10, 10, -10, 10, 0.1, 50]}
+        />
+      </directionalLight>
       <Physics gravity={[0, -10, 0]}>
         <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
         <Ground>
-          <mesh position={[0, 1, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={10}>
+          <mesh
+            position={[0, 1, 0]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={10}
+            receiveShadow
+          >
             <planeGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color={"white"} />
           </mesh>
