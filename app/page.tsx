@@ -47,6 +47,14 @@ export default function Home() {
               />
             </EffectComposer>
           </Suspense>
+          <EffectComposer>
+            <Vignette eskil={false} offset={0.05} darkness={0.7} />
+            <Bloom
+              luminanceThreshold={0.5}
+              luminanceSmoothing={3}
+              intensity={2}
+            />
+          </EffectComposer>
         </Canvas>
       </KeyboardControls>
     </main>
