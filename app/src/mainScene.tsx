@@ -25,7 +25,7 @@ export default function MainScene() {
         castShadow
         position={[2.5, 8, 5]}
         intensity={1.5}
-        shadow-mapSize={1024 * 2}
+        shadow-mapSize={1024}
         shadow-bias={-0.001}
       >
         <orthographicCamera
@@ -46,18 +46,18 @@ export default function MainScene() {
             <meshStandardMaterial color={"white"} />
           </mesh>
         </Ground>
-        <Ocean />
-        <Gltf src="/models/moon.gltf" position={[0, 60, -870]} scale={110} />
-        <Stars
-          radius={100} // Radius of the inner sphere (default=100)
-          depth={50} // Depth of area where stars should fit (default=50)
-          count={5000} // Amount of stars (default=5000)
-          factor={6} // Size factor (default=4)
-          saturation={1} // Saturation 0-1 (default=0)
-          fade // Faded dots (default=false)
-        />
-        <Ceramics />
       </Physics>
+      <Ocean />
+      <Gltf src="/models/moon.gltf" position={[0, 60, -870]} scale={110} />
+      <Stars
+        radius={100} // Radius of the inner sphere (default=100)
+        depth={50} // Depth of area where stars should fit (default=50)
+        count={5000} // Amount of stars (default=5000)
+        factor={6} // Size factor (default=4)
+        saturation={1} // Saturation 0-1 (default=0)
+        fade // Faded dots (default=false)
+      />
+      <Ceramics />
     </>
   );
 }

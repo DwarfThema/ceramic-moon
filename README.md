@@ -4,7 +4,7 @@ Title : Ceramic Moon
 
 Author : Donggi Eun
 
-ArtRrl : [`Click`](https://Cermaic-Moon-git-master-dwarfthema.vercel.app/)
+ArtUrl : [`Click`](https://Cermaic-Moon-git-master-dwarfthema.vercel.app/)
 
 Platform : [`VivleThemeMuseum`](https://vivle-theme-museum-git-master-dwarfthema.vercel.app/)
 
