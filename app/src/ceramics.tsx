@@ -1,4 +1,3 @@
-
 import { Float, Gltf, Instance, useGLTF } from "@react-three/drei";
 import { useFrame, useGraph } from "@react-three/fiber";
 import { useControls } from "leva";
@@ -6,8 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Group, Material, Mesh } from "three";
 
 export default function Ceramics() {
-  const { scene } = useGLTF("/models/cermaics.gltf");
-
+  const { scene } = useGLTF("/models/cermaics.glb");
   const ceramicScene = useMemo(() => scene, [scene]);
   const { nodes } = useGraph(ceramicScene);
   const ceramicMesh = nodes.Scene as Group;
@@ -41,10 +39,14 @@ export default function Ceramics() {
     posz: { value: -9, step: 1 },
     scale: { value: 59, step: 1 },
   });
-          31.5 - Math.random() * 59,
-          56 - Math.random() * 59,
-          -9 - Math.random() * 59,
 
+  const positionsB = useMemo(() => {
+    return [...Array(60)]
+      .map(() => ({
+        position: [
+          posx - Math.random() * scale,
+          posy - Math.random() * scale,
+          posz - Math.random() * scale,
         ],
       }))
       .filter(
@@ -55,7 +57,25 @@ export default function Ceramics() {
       );
   }, []);
 
-  useEffect(() => {});
+  /*   const positionsB = [...Array(60)]
+    .map(() => ({
+      position: [
+        posx - Math.random() * scale,
+        posy - Math.random() * scale,
+        posz - Math.random() * scale,
+      ],
+    }))
+    .filter(
+      (pos) =>
+        (pos.position[0] < 0 || pos.position[0] > 15) &&
+        (pos.position[1] < 0 || pos.position[1] > 15) &&
+        (pos.position[2] < 0 || pos.position[2] > 15)
+    ); */
+
+  useEffect(() => {
+    //console.log(positionsA), [];
+  });
+
   return (
     <group>
       {ceramicMeshs.map((mesh, index) => {
@@ -124,8 +144,6 @@ function Ceramic({
           setClicked(true);
           console.log("good");
         }}
-
-        material={material}
         geometry={mesh.geometry}
         position={[
           positionB?.position[0] as number,
