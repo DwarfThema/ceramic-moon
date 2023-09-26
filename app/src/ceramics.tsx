@@ -1,4 +1,3 @@
-
 import { Float, Gltf, Instance, useGLTF } from "@react-three/drei";
 import { useFrame, useGraph } from "@react-three/fiber";
 import { useControls } from "leva";
@@ -7,7 +6,6 @@ import { Group, Material, Mesh } from "three";
 
 export default function Ceramics() {
   const { scene } = useGLTF("/models/cermaics.gltf");
-
   const ceramicScene = useMemo(() => scene, [scene]);
   const { nodes } = useGraph(ceramicScene);
   const ceramicMesh = nodes.Scene as Group;
@@ -34,13 +32,11 @@ export default function Ceramics() {
           (pos.position[2] < 0 || pos.position[2] > 5)
       );
   }, []);
-
-  const { posx, posy, posz, scale } = useControls({
-    posx: { value: 31.5, step: 0.1 },
-    posy: { value: 56, step: 1 },
-    posz: { value: -9, step: 1 },
-    scale: { value: 59, step: 1 },
-  });
+  
+  const positionsB = useMemo(() => {
+    return [...Array(60)]
+      .map(() => ({
+        position: [
           31.5 - Math.random() * 59,
           56 - Math.random() * 59,
           -9 - Math.random() * 59,
@@ -56,6 +52,7 @@ export default function Ceramics() {
   }, []);
 
   useEffect(() => {});
+
   return (
     <group>
       {ceramicMeshs.map((mesh, index) => {
@@ -124,7 +121,6 @@ function Ceramic({
           setClicked(true);
           console.log("good");
         }}
-
         material={material}
         geometry={mesh.geometry}
         position={[
