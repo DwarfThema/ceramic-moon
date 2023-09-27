@@ -5,18 +5,27 @@ import Ocean from "./ocean";
 import { useControls } from "leva";
 import {
   BakeShadows,
-  Cloud,
+  CameraControls,
   Gltf,
-  OrbitControls,
   SoftShadows,
   Stars,
 } from "@react-three/drei";
 import Ceramics from "./ceramics";
-import { useEffect, useMemo, useRef } from "react";
-import { PointLight, PointLightShadow, Vector2 } from "three";
-import { vector2 } from "maath";
+import { isMobile } from "react-device-detect";
+import { useEffect, useRef } from "react";
 
 export default function MainScene() {
+  const controlRef = useRef<CameraControls>(null);
+
+  useEffect(() => {
+    if (controlRef) {
+      console.log("123");
+
+      controlRef.current?.setPosition(0, 3, 0);
+      controlRef.current?.setTarget(0, 2.8, 0);
+    }
+  }, [controlRef]);
+
   return (
     <>
       <BakeShadows />
@@ -34,7 +43,21 @@ export default function MainScene() {
         />
       </directionalLight>
       <Physics gravity={[0, -10, 0]}>
-        <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
+        {isMobile ? (
+          <CameraControls
+            ref={controlRef}
+            makeDefault
+            maxSpeed={0}
+            minPolarAngle={Math.PI / 2}
+            maxPolarAngle={0}
+            minAzimuthAngle={-Math.PI / 10}
+            maxAzimuthAngle={Math.PI / 10}
+            azimuthRotateSpeed={0.03}
+          />
+        ) : (
+          <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
+        )}
+
         <Ground>
           <mesh
             position={[0, 1, 0]}
