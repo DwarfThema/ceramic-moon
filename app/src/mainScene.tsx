@@ -49,7 +49,8 @@ export default function MainScene() {
             makeDefault
             maxSpeed={0}
             minPolarAngle={Math.PI / 2}
-            maxPolarAngle={0}
+            maxPolarAngle={Math.PI / 1.6}
+            polarRotateSpeed={0.03}
             minAzimuthAngle={-Math.PI / 10}
             maxAzimuthAngle={Math.PI / 10}
             azimuthRotateSpeed={0.03}
