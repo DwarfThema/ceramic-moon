@@ -19,17 +19,10 @@ export default function MainScene() {
 
   useEffect(() => {
     if (controlRef) {
-      controlRef.current?.setPosition(0, 3, 0);
+      controlRef.current?.setPosition(0, 13, 0);
       controlRef.current?.setTarget(0, 2.8, 0);
     }
   }, [controlRef]);
-
-  const { posx, posy, posz, scale } = useControls({
-    posx: { value: 2.4, step: 0.1 },
-    posy: { value: 1, step: 0.1 },
-    posz: { value: -3.1, step: 0.1 },
-    scale: { value: 0.25, step: 0.1 },
-  });
 
   return (
     <>
@@ -71,9 +64,9 @@ export default function MainScene() {
       <Ocean />
       <Gltf
         src="/models/rabbit_insta.gltf"
-        position={[posx, posy, posz]}
+        position={[2.4, 1, -3.1]}
         rotation={[0, -Math.PI / 1.2, 0]}
-        scale={scale}
+        scale={0.25}
         receiveShadow
         castShadow
         onClick={() => {
