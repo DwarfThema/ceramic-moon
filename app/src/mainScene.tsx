@@ -19,12 +19,17 @@ export default function MainScene() {
 
   useEffect(() => {
     if (controlRef) {
-      console.log("123");
-
       controlRef.current?.setPosition(0, 3, 0);
       controlRef.current?.setTarget(0, 2.8, 0);
     }
   }, [controlRef]);
+
+  const { posx, posy, posz, scale } = useControls({
+    posx: { value: 2.4, step: 0.1 },
+    posy: { value: 1, step: 0.1 },
+    posz: { value: -3.1, step: 0.1 },
+    scale: { value: 0.25, step: 0.1 },
+  });
 
   return (
     <>
@@ -50,28 +55,34 @@ export default function MainScene() {
             maxSpeed={0}
             minPolarAngle={Math.PI / 2}
             maxPolarAngle={Math.PI / 1.6}
-            polarRotateSpeed={0.03}
+            polarRotateSpeed={0.1}
             minAzimuthAngle={-Math.PI / 10}
             maxAzimuthAngle={Math.PI / 10}
             azimuthRotateSpeed={0.03}
           />
         ) : (
-          <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
+          <Player pos={{ x: 0, y: 2.5, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 
         <Ground>
-          <mesh
-            position={[0, 1, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={10}
-            receiveShadow
-          >
-            <planeGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={"white"} />
-          </mesh>
+          <Gltf src="/models/gorund.gltf" position={[0, 0, 0]} receiveShadow />
         </Ground>
       </Physics>
       <Ocean />
+      <Gltf
+        src="/models/rabbit_insta.gltf"
+        position={[posx, posy, posz]}
+        rotation={[0, -Math.PI / 1.2, 0]}
+        scale={scale}
+        receiveShadow
+        castShadow
+        onClick={() => {
+          var newWindow = window.open("about:blank") as Window;
+          if (newWindow) {
+            newWindow.location.href = "https://www.instagram.com/eundoyo/";
+          }
+        }}
+      />
       <Gltf src="/models/moon.gltf" position={[0, 60, -870]} scale={110} />
       <Stars
         radius={100} // Radius of the inner sphere (default=100)

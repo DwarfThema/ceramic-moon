@@ -20,16 +20,16 @@ export default function Ceramics() {
     return [...Array(60)]
       .map(() => ({
         position: [
-          0 - Math.random() * 10,
-          10 - Math.random() * 10,
-          0 - Math.random() * 10,
+          0 - Math.random() * 15,
+          10 - Math.random() * 15,
+          0 - Math.random() * 15,
         ],
       }))
       .filter(
         (pos) =>
-          (pos.position[0] < 0 || pos.position[0] > 5) &&
-          (pos.position[1] < 0 || pos.position[1] > 5) &&
-          (pos.position[2] < 0 || pos.position[2] > 5)
+          (pos.position[0] < 0 || pos.position[0] > 7) &&
+          (pos.position[1] < 0 || pos.position[1] > 7) &&
+          (pos.position[2] < 0 || pos.position[2] > 7)
       );
   }, []);
   const positionsB = useMemo(() => {
@@ -71,7 +71,7 @@ export default function Ceramics() {
               geometry={mesh.geometry}
               material={mesh.material}
               position={mesh.position}
-              scale={1}
+              scale={1.5}
               receiveShadow
               castShadow
             />
@@ -125,7 +125,7 @@ function Ceramic({
           positionB?.position[1] as number,
           positionB?.position[2] as number,
         ]}
-        scale={12}
+        scale={9}
         {...props}
       />
     </Float>
