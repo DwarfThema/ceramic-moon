@@ -8,7 +8,6 @@ export default function Ceramics() {
   const { scene } = useGLTF("/models/cermaics.gltf");
   const ceramicScene = useMemo(() => scene, [scene]);
   const { nodes } = useGraph(ceramicScene);
-
   const ceramicMesh = nodes.Scene as Group;
   const ceramicMeshs: Mesh[] = [];
   ceramicMesh.traverse((obj) => {
@@ -33,7 +32,6 @@ export default function Ceramics() {
           (pos.position[2] < 0 || pos.position[2] > 5)
       );
   }, []);
-
   const positionsB = useMemo(() => {
     return [...Array(60)]
       .map(() => ({
