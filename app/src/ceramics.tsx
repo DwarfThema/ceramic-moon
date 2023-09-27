@@ -32,7 +32,6 @@ export default function Ceramics() {
           (pos.position[2] < 0 || pos.position[2] > 5)
       );
   }, []);
-  
   const positionsB = useMemo(() => {
     return [...Array(60)]
       .map(() => ({
@@ -40,7 +39,6 @@ export default function Ceramics() {
           31.5 - Math.random() * 59,
           56 - Math.random() * 59,
           -9 - Math.random() * 59,
-
         ],
       }))
       .filter(
@@ -93,7 +91,6 @@ function Ceramic({
 }: {
   mesh: Mesh;
   material: Material;
-
   positionA?: { position: number[] };
   positionB?: { position: number[] };
 }) {
