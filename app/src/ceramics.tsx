@@ -20,16 +20,16 @@ export default function Ceramics() {
     return [...Array(60)]
       .map(() => ({
         position: [
-          0 - Math.random() * 15,
-          10 - Math.random() * 15,
-          0 - Math.random() * 15,
+          31.5 - Math.random() * 59,
+          56 - Math.random() * 59,
+          70 - Math.random() * 59,
         ],
       }))
       .filter(
         (pos) =>
-          (pos.position[0] < 0 || pos.position[0] > 7) &&
-          (pos.position[1] < 0 || pos.position[1] > 7) &&
-          (pos.position[2] < 0 || pos.position[2] > 7)
+          (pos.position[0] < 0 || pos.position[0] > 10) &&
+          (pos.position[1] < 0 || pos.position[1] > 10) &&
+          (pos.position[2] < 0 || pos.position[2] > 10)
       );
   }, []);
   const positionsB = useMemo(() => {
@@ -43,9 +43,9 @@ export default function Ceramics() {
       }))
       .filter(
         (pos) =>
-          (pos.position[0] < 0 || pos.position[0] > 5) &&
-          (pos.position[1] < 0 || pos.position[1] > 5) &&
-          (pos.position[2] < 0 || pos.position[2] > 5)
+          (pos.position[0] < 0 || pos.position[0] > 10) &&
+          (pos.position[1] < 0 || pos.position[1] > 10) &&
+          (pos.position[2] < 0 || pos.position[2] > 10)
       );
   }, []);
 
@@ -111,23 +111,43 @@ function Ceramic({
   });
 
   return (
-    <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
-      <mesh
-        ref={ref}
-        onClick={() => {
-          setClicked(true);
-          console.log("good");
-        }}
-        material={material}
-        geometry={mesh.geometry}
-        position={[
-          positionB?.position[0] as number,
-          positionB?.position[1] as number,
-          positionB?.position[2] as number,
-        ]}
-        scale={9}
-        {...props}
-      />
-    </Float>
+    <>
+      <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
+        <mesh
+          ref={ref}
+          onClick={() => {
+            setClicked(true);
+            console.log("good");
+          }}
+          material={material}
+          geometry={mesh.geometry}
+          position={[
+            positionA?.position[0] as number,
+            positionA?.position[1] as number,
+            positionA?.position[2] as number,
+          ]}
+          scale={9}
+          {...props}
+        />
+      </Float>
+      <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
+        <mesh
+          ref={ref}
+          onClick={() => {
+            setClicked(true);
+            console.log("good");
+          }}
+          material={material}
+          geometry={mesh.geometry}
+          position={[
+            positionB?.position[0] as number,
+            positionB?.position[1] as number,
+            positionB?.position[2] as number,
+          ]}
+          scale={9}
+          {...props}
+        />
+      </Float>
+    </>
   );
 }

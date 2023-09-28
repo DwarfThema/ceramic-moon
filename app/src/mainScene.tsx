@@ -61,7 +61,7 @@ export default function MainScene() {
             azimuthRotateSpeed={0.03}
           />
         ) : (
-          <Player pos={{ x: 0, y: 2.5, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
+          <Player pos={{ x: 0, y: 3, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 
         <Ground>
