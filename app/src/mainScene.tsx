@@ -24,13 +24,6 @@ export default function MainScene() {
     }
   }, [controlRef]);
 
-  const { posx, posy, posz, scale } = useControls({
-    posx: { value: 2.4, step: 0.1 },
-    posy: { value: 1, step: 0.1 },
-    posz: { value: -3.1, step: 0.1 },
-    scale: { value: 0.25, step: 0.1 },
-  });
-
   return (
     <>
       <BakeShadows />
@@ -61,7 +54,7 @@ export default function MainScene() {
             azimuthRotateSpeed={0.03}
           />
         ) : (
-          <Player pos={{ x: 0, y: 2.5, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
+          <Player pos={{ x: 0, y: 3, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 
         <Ground>

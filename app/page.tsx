@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Effects,
-  Environment,
-  KeyboardControls,
-  Stats,
-} from "@react-three/drei";
+import { Environment, KeyboardControls, Stats } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MainScene from "./src/mainScene";
 import { Suspense } from "react";
