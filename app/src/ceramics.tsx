@@ -94,15 +94,23 @@ function Ceramic({
   positionA?: { position: number[] };
   positionB?: { position: number[] };
 }) {
-  const ref = useRef<Mesh>(null);
+  const refFront = useRef<Mesh>(null);
+  const refBack = useRef<Mesh>(null);
   const [isClicked, setClicked] = useState(false);
 
   const random = positionB?.position[1] as number;
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime() + random * 1;
-    if (ref.current) {
-      ref.current.rotation.set(
+    if (refFront.current) {
+      refFront.current.rotation.set(
+        Math.cos(t / 8) / 2,
+        Math.sin(t / 8) / 2,
+        Math.cos(t / 3) / 2
+      );
+    }
+    if (refBack.current) {
+      refBack.current.rotation.set(
         Math.cos(t / 8) / 2,
         Math.sin(t / 8) / 2,
         Math.cos(t / 3) / 2
@@ -114,7 +122,7 @@ function Ceramic({
     <>
       <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
         <mesh
-          ref={ref}
+          ref={refFront}
           onClick={() => {
             setClicked(true);
             console.log("good");
@@ -132,7 +140,7 @@ function Ceramic({
       </Float>
       <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
         <mesh
-          ref={ref}
+          ref={refBack}
           onClick={() => {
             setClicked(true);
             console.log("good");
