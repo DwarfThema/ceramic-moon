@@ -1,11 +1,7 @@
 "use client";
 
-import {
-  Environment,
-  KeyboardControls,
-  Loader,
-  Stats,
-} from "@react-three/drei";
+
+import { Environment, KeyboardControls, Stats } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MainScene from "./src/mainScene";
 import { Suspense } from "react";
@@ -29,6 +25,7 @@ export default function Home() {
         <Stats />
         <Canvas
           shadows
+          className="z-10"
           camera={{ fov: 40 }}
           onCreated={({ gl }) => {
             gl.toneMapping = ACESFilmicToneMapping;
@@ -58,6 +55,7 @@ export default function Home() {
           </EffectComposer>
         </Canvas>
       </KeyboardControls>
+      <LoadingScreen />
     </main>
   );
 }

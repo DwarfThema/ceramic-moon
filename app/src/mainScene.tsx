@@ -2,7 +2,6 @@ import { Physics } from "@react-three/rapier";
 import { Ground } from "./ground";
 import { Player } from "./player";
 import Ocean from "./ocean";
-import { useControls } from "leva";
 import {
   BakeShadows,
   CameraControls,
@@ -13,6 +12,7 @@ import {
 import Ceramics from "./ceramics";
 import { isMobile } from "react-device-detect";
 import { useEffect, useRef } from "react";
+import Rabbits from "./rabbits";
 
 export default function MainScene() {
   const controlRef = useRef<CameraControls>(null);
@@ -26,7 +26,6 @@ export default function MainScene() {
 
   return (
     <>
-      <BakeShadows />
       <SoftShadows size={10} focus={0} samples={20} />
       <directionalLight
         castShadow
@@ -57,11 +56,13 @@ export default function MainScene() {
           <Player pos={{ x: 0, y: 3, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 
+        <Rabbits />
         <Ground>
           <Gltf src="/models/gorund.gltf" position={[0, 0, 0]} receiveShadow />
         </Ground>
       </Physics>
       <Ocean />
+
       <Gltf
         src="/models/rabbit_insta.gltf"
         position={[2.4, 1, -3.1]}
