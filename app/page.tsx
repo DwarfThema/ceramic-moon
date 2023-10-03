@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Environment, KeyboardControls, Stats } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MainScene from "./src/mainScene";
@@ -31,7 +32,7 @@ export default function Home() {
             gl.toneMappingExposure = 0.9;
           }}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={<LoadingScreen />}>
             <Environment files={"/textures/hdr.hdr"} background blur={0.4} />
             <fog attach="fog" args={["#202030", 10, 5000]} />
             <MainScene />
