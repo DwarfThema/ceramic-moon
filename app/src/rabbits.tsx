@@ -21,6 +21,7 @@ export default function Rabbits({ ...props }) {
   const [rabbits, setRabbits] = useState<RabbitInfo[]>([]);
 
   const rabbitModels = ["/models/rabbit_bk.gltf", "/models/rabbit_wt.gltf"];
+  const [generateTime, setGenerateTime] = useState(2000);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +35,12 @@ export default function Rabbits({ ...props }) {
         ...prev,
         { position: [x, y, z], model, key: rabbits.length, rotationY },
       ]);
-    }, 250);
+
+      if (generateTime >= 250) {
+        setGenerateTime((prev) => prev - 50);
+        console.log(generateTime);
+      }
+    }, generateTime);
 
     return () => clearInterval(interval);
   }, [rabbits]);
@@ -60,58 +66,14 @@ interface RabbitProps {
 }
 
 function Rabbit({ position, model, rotationY }: RabbitProps) {
-  const SPEED = 2 as number;
-
-  const rabbitRef = useRef(null);
   const rabbitRigidRef = useRef<RapierRigidBody | null>(null);
-  const rapier = useRapier();
-
-  const [jumping, setJumping] = useState(true);
-  const frontVector = new Vector3();
-  const direction = new Vector3();
-  const sideVector = new Vector3();
-
-  useFrame(() => {
-    console.log(rabbitRef.current);
-
-    const velocity = rabbitRigidRef?.current?.linvel();
-    const Rigidposition =
-      rabbitRigidRef?.current?.translation() as THREE.Vector3; /* 
-
-    frontVector.set(0, 0, 0);
-    direction
-      .subVectors(frontVector, sideVector)
-      .normalize()
-      .multiplyScalar(SPEED);
-    rabbitRigidRef?.current?.setLinvel(
-      {
-        x: direction.x,
-        y: velocity?.y as number,
-        z: direction.z,
-      },
-      true
-    ); */
-
-    const world = rapier?.world;
-    const newRay = new RAPIER.Ray(Rigidposition, { x: 0, y: -1, z: 0 });
-    const ray = world?.castRay(newRay, 1.599, false);
-    const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.7;
-
-    /* if (grounded === null && jumping) {
-      console.log("ininini");
-
-      rabbitRigidRef?.current?.setLinvel({ x: 2, y: 5, z: 0 }, true);
-      setJumping(false);
-      setTimeout(() => setJumping(true), 5000);
-    } */
-  });
 
   return (
     <RigidBody
       ref={rabbitRigidRef}
       position={position}
       colliders="cuboid"
-      mass={3}
+      mass={10}
     >
       <Gltf
         src={model}
