@@ -5,8 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ceramic Moon",
-  description: "VIVLE-THEME-MUSEUM : Ceramic Moon",
+  title: "Dal-Ma-Gi",
+  description: "VIVLE-THEME-MUSEUM : Dal Ma Gi Project",
 };
 
 export default function RootLayout({

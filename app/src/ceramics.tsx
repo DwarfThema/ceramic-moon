@@ -20,18 +20,19 @@ export default function Ceramics() {
     return [...Array(60)]
       .map(() => ({
         position: [
-          0 - Math.random() * 10,
-          10 - Math.random() * 10,
-          0 - Math.random() * 10,
+          31.5 - Math.random() * 59,
+          56 - Math.random() * 59,
+          70 - Math.random() * 59,
         ],
       }))
       .filter(
         (pos) =>
-          (pos.position[0] < 0 || pos.position[0] > 5) &&
-          (pos.position[1] < 0 || pos.position[1] > 5) &&
-          (pos.position[2] < 0 || pos.position[2] > 5)
+          (pos.position[0] < 0 || pos.position[0] > 10) &&
+          (pos.position[1] < 0 || pos.position[1] > 10) &&
+          (pos.position[2] < 0 || pos.position[2] > 10)
       );
   }, []);
+<<<<<<< HEAD
 
   const { posx, posy, posz, scale } = useControls({
     posx: { value: 31.5, step: 0.1 },
@@ -40,20 +41,28 @@ export default function Ceramics() {
     scale: { value: 59, step: 1 },
   });
 
+=======
+>>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
   const positionsB = useMemo(() => {
     return [...Array(60)]
       .map(() => ({
         position: [
+<<<<<<< HEAD
           posx - Math.random() * scale,
           posy - Math.random() * scale,
           posz - Math.random() * scale,
+=======
+          31.5 - Math.random() * 59,
+          56 - Math.random() * 59,
+          -9 - Math.random() * 59,
+>>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
         ],
       }))
       .filter(
         (pos) =>
-          (pos.position[0] < 0 || pos.position[0] > 5) &&
-          (pos.position[1] < 0 || pos.position[1] > 5) &&
-          (pos.position[2] < 0 || pos.position[2] > 5)
+          (pos.position[0] < 0 || pos.position[0] > 10) &&
+          (pos.position[1] < 0 || pos.position[1] > 10) &&
+          (pos.position[2] < 0 || pos.position[2] > 10)
       );
   }, []);
 
@@ -96,7 +105,7 @@ export default function Ceramics() {
               geometry={mesh.geometry}
               material={mesh.material}
               position={mesh.position}
-              scale={1}
+              scale={1.5}
               receiveShadow
               castShadow
             />
@@ -116,19 +125,26 @@ function Ceramic({
 }: {
   mesh: Mesh;
   material: Material;
-
   positionA?: { position: number[] };
   positionB?: { position: number[] };
 }) {
-  const ref = useRef<Mesh>(null);
+  const refFront = useRef<Mesh>(null);
+  const refBack = useRef<Mesh>(null);
   const [isClicked, setClicked] = useState(false);
 
   const random = positionB?.position[1] as number;
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime() + random * 1;
-    if (ref.current) {
-      ref.current.rotation.set(
+    if (refFront.current) {
+      refFront.current.rotation.set(
+        Math.cos(t / 8) / 2,
+        Math.sin(t / 8) / 2,
+        Math.cos(t / 3) / 2
+      );
+    }
+    if (refBack.current) {
+      refBack.current.rotation.set(
         Math.cos(t / 8) / 2,
         Math.sin(t / 8) / 2,
         Math.cos(t / 3) / 2
@@ -137,6 +153,7 @@ function Ceramic({
   });
 
   return (
+<<<<<<< HEAD
     <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
       <mesh
         ref={ref}
@@ -154,5 +171,45 @@ function Ceramic({
         {...props}
       />
     </Float>
+=======
+    <>
+      <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
+        <mesh
+          ref={refFront}
+          onClick={() => {
+            setClicked(true);
+            console.log("good");
+          }}
+          material={material}
+          geometry={mesh.geometry}
+          position={[
+            positionA?.position[0] as number,
+            positionA?.position[1] as number,
+            positionA?.position[2] as number,
+          ]}
+          scale={9}
+          {...props}
+        />
+      </Float>
+      <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
+        <mesh
+          ref={refBack}
+          onClick={() => {
+            setClicked(true);
+            console.log("good");
+          }}
+          material={material}
+          geometry={mesh.geometry}
+          position={[
+            positionB?.position[0] as number,
+            positionB?.position[1] as number,
+            positionB?.position[2] as number,
+          ]}
+          scale={9}
+          {...props}
+        />
+      </Float>
+    </>
+>>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
   );
 }

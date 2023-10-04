@@ -1,6 +1,6 @@
 ## VIVLE-THEME-MUSEUM : Cermaic-Moon
 
-Title : Ceramic Moon
+Title : Dal Ma Gi
 
 Author : Donggi Eun
 

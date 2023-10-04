@@ -1,20 +1,17 @@
 "use client";
 
-import {
-  Effects,
-  Environment,
-  KeyboardControls,
-  Stats,
-} from "@react-three/drei";
+import { Environment, KeyboardControls, Stats } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MainScene from "./src/mainScene";
 import { Suspense } from "react";
 import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
 import { ACESFilmicToneMapping, sRGBEncoding } from "three";
+import LoadingScreen from "./src/loadingScreen";
 
 export default function Home() {
   return (
-    <main className="flex h-screen w-screen flex-col items-center justify-between">
+    <main className="h-screen w-screen absolute">
+      <LoadingScreen />
       <KeyboardControls
         map={[
           { name: "forward", keys: ["ArrowUp", "w", "W"] },
@@ -25,9 +22,10 @@ export default function Home() {
           { name: "sit", keys: ["v"] },
         ]}
       >
-        <Stats />
+        {/* <Stats /> */}
         <Canvas
           shadows
+          className="z-10 h-screen w-screen"
           camera={{ fov: 40 }}
           onCreated={({ gl }) => {
             gl.toneMapping = ACESFilmicToneMapping;

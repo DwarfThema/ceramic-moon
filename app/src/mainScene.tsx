@@ -2,25 +2,45 @@ import { Physics } from "@react-three/rapier";
 import { Ground } from "./ground";
 import { Player } from "./player";
 import Ocean from "./ocean";
-import { useControls } from "leva";
 import {
   BakeShadows,
-  Cloud,
+  CameraControls,
   Gltf,
-  OrbitControls,
   SoftShadows,
   Stars,
 } from "@react-three/drei";
 import Ceramics from "./ceramics";
-import { useEffect, useMemo, useRef } from "react";
-import { PointLight, PointLightShadow, Vector2 } from "three";
-import { vector2 } from "maath";
+import { isMobile } from "react-device-detect";
+import { useEffect, useRef } from "react";
+import Rabbits from "./rabbits";
 
 export default function MainScene() {
+  const controlRef = useRef<CameraControls>(null);
+
+  useEffect(() => {
+    if (controlRef) {
+      controlRef.current?.setPosition(0, 13, 0);
+      controlRef.current?.setTarget(0, 2.8, 0);
+    }
+  }, [controlRef]);
+
   return (
     <>
-      <BakeShadows />
       <SoftShadows size={10} focus={0} samples={20} />
+      {isMobile ? (
+        <CameraControls
+          ref={controlRef}
+          makeDefault
+          maxSpeed={0}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 1.6}
+          polarRotateSpeed={0.1}
+          minAzimuthAngle={-Math.PI / 10}
+          maxAzimuthAngle={Math.PI / 10}
+          azimuthRotateSpeed={0.03}
+        />
+      ) : null}
+
       <directionalLight
         castShadow
         position={[2.5, 8, 5]}
@@ -34,20 +54,31 @@ export default function MainScene() {
         />
       </directionalLight>
       <Physics gravity={[0, -10, 0]}>
-        <Player pos={{ x: 0, y: 2.5, z: 0 }} rot={{ x: 0, y: 0, z: 0 }} />
+        {isMobile ? null : (
+          <Player pos={{ x: 0, y: 3, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
+        )}
+
+        <Rabbits />
         <Ground>
-          <mesh
-            position={[0, 1, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={10}
-            receiveShadow
-          >
-            <planeGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={"white"} />
-          </mesh>
+          <Gltf src="/models/gorund.gltf" position={[0, 0, 0]} receiveShadow />
         </Ground>
       </Physics>
       <Ocean />
+
+      <Gltf
+        src="/models/rabbit_insta.gltf"
+        position={[2.4, 1, -3.1]}
+        rotation={[0, -Math.PI / 1.2, 0]}
+        scale={0.25}
+        receiveShadow
+        castShadow
+        onClick={() => {
+          var newWindow = window.open("about:blank") as Window;
+          if (newWindow) {
+            newWindow.location.href = "https://www.instagram.com/eundoyo/";
+          }
+        }}
+      />
       <Gltf src="/models/moon.gltf" position={[0, 60, -870]} scale={110} />
       <Stars
         radius={100} // Radius of the inner sphere (default=100)
