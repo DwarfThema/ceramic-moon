@@ -3,18 +3,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
-  const { progress } = useProgress();
+  const { progress, loaded } = useProgress();
   const [loading, setLoading] = useState(false);
   const [transitionEnd, setTransitionEnd] = useState(false);
 
   useEffect(() => {
-    if (progress >= 100) {
+    console.log(loaded);
+    if (loaded >= 28) {
       setLoading(true);
       setTimeout(() => {
         setTransitionEnd(true);
       }, 5500);
     }
-  }, [progress]);
+  }, [progress, loaded]);
 
   return (
     <div
@@ -25,7 +26,9 @@ export default function LoadingScreen() {
       )}
     >
       <div className="xl:pt-36 pt-[50%]">LOADING</div>
-      <div className="font-extrabold mb-5">{Math.floor(progress)}%</div>
+      <div className="font-extrabold mb-5">
+        {Math.floor((loaded / 28) * 100)}%
+      </div>
       <div className="xl:w-[23%] w-[43%] h-[50%]  bg-no-repeat bg-contain bg-[url('/Logo.svg')]" />
     </div>
   );

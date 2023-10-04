@@ -21,7 +21,7 @@ export default function Rabbits({ ...props }) {
   const [rabbits, setRabbits] = useState<RabbitInfo[]>([]);
 
   const rabbitModels = ["/models/rabbit_bk.gltf", "/models/rabbit_wt.gltf"];
-  const [generateTime, setGenerateTime] = useState(2000);
+  const [generateTime, setGenerateTime] = useState(5000);
 
   useEffect(() => {
     const interval = setInterval(() => {
