@@ -27,6 +27,20 @@ export default function MainScene() {
   return (
     <>
       <SoftShadows size={10} focus={0} samples={20} />
+      {isMobile ? (
+        <CameraControls
+          ref={controlRef}
+          makeDefault
+          maxSpeed={0}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 1.6}
+          polarRotateSpeed={0.1}
+          minAzimuthAngle={-Math.PI / 10}
+          maxAzimuthAngle={Math.PI / 10}
+          azimuthRotateSpeed={0.03}
+        />
+      ) : null}
+
       <directionalLight
         castShadow
         position={[2.5, 8, 5]}
@@ -40,19 +54,7 @@ export default function MainScene() {
         />
       </directionalLight>
       <Physics gravity={[0, -10, 0]}>
-        {isMobile ? (
-          <CameraControls
-            ref={controlRef}
-            makeDefault
-            maxSpeed={0}
-            minPolarAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 1.6}
-            polarRotateSpeed={0.1}
-            minAzimuthAngle={-Math.PI / 10}
-            maxAzimuthAngle={Math.PI / 10}
-            azimuthRotateSpeed={0.03}
-          />
-        ) : (
+        {isMobile ? null : (
           <Player pos={{ x: 0, y: 3, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 

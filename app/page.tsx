@@ -10,7 +10,8 @@ import LoadingScreen from "./src/loadingScreen";
 
 export default function Home() {
   return (
-    <main className="flex h-screen w-screen flex-col items-center justify-between">
+    <main className="h-screen w-screen absolute">
+      <LoadingScreen />
       <KeyboardControls
         map={[
           { name: "forward", keys: ["ArrowUp", "w", "W"] },
@@ -21,10 +22,10 @@ export default function Home() {
           { name: "sit", keys: ["v"] },
         ]}
       >
-        <Stats />
+        {/* <Stats /> */}
         <Canvas
           shadows
-          className="z-10"
+          className="z-10 h-screen w-screen"
           camera={{ fov: 40 }}
           onCreated={({ gl }) => {
             gl.toneMapping = ACESFilmicToneMapping;
@@ -54,7 +55,6 @@ export default function Home() {
           </EffectComposer>
         </Canvas>
       </KeyboardControls>
-      <LoadingScreen />
     </main>
   );
 }

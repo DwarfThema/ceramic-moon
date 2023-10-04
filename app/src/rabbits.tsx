@@ -38,7 +38,6 @@ export default function Rabbits({ ...props }) {
 
       if (generateTime >= 250) {
         setGenerateTime((prev) => prev - 50);
-        console.log(generateTime);
       }
     }, generateTime);
 
