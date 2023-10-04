@@ -5,7 +5,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Group, Material, Mesh } from "three";
 
 export default function Ceramics() {
+<<<<<<< HEAD
   const { scene } = useGLTF("/models/cermaics.glb");
+=======
+  const { scene } = useGLTF("/models/cermaics.gltf");
+>>>>>>> dev
   const ceramicScene = useMemo(() => scene, [scene]);
   const { nodes } = useGraph(ceramicScene);
   const ceramicMesh = nodes.Scene as Group;
@@ -33,6 +37,7 @@ export default function Ceramics() {
       );
   }, []);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   const { posx, posy, posz, scale } = useControls({
     posx: { value: 31.5, step: 0.1 },
@@ -43,6 +48,8 @@ export default function Ceramics() {
 
 =======
 >>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
+=======
+>>>>>>> dev
   const positionsB = useMemo(() => {
     return [...Array(60)]
       .map(() => ({
@@ -55,7 +62,10 @@ export default function Ceramics() {
           31.5 - Math.random() * 59,
           56 - Math.random() * 59,
           -9 - Math.random() * 59,
+<<<<<<< HEAD
 >>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
+=======
+>>>>>>> dev
         ],
       }))
       .filter(
@@ -66,6 +76,7 @@ export default function Ceramics() {
       );
   }, []);
 
+<<<<<<< HEAD
   /*   const positionsB = [...Array(60)]
     .map(() => ({
       position: [
@@ -84,6 +95,9 @@ export default function Ceramics() {
   useEffect(() => {
     //console.log(positionsA), [];
   });
+=======
+  useEffect(() => {});
+>>>>>>> dev
 
   return (
     <group>
@@ -154,6 +168,7 @@ function Ceramic({
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
       <mesh
         ref={ref}
@@ -172,6 +187,8 @@ function Ceramic({
       />
     </Float>
 =======
+=======
+>>>>>>> dev
     <>
       <Float speed={0.3} floatIntensity={0.2} floatingRange={[1, 5]}>
         <mesh
@@ -210,6 +227,9 @@ function Ceramic({
         />
       </Float>
     </>
+<<<<<<< HEAD
 >>>>>>> 72a942addd9b8b0e5f160ab021ae0a89c016b729
+=======
+>>>>>>> dev
   );
 }
