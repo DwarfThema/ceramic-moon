@@ -55,7 +55,7 @@ export default function MainScene() {
       </directionalLight>
       <Physics gravity={[0, -10, 0]}>
         {isMobile ? null : (
-          <Player pos={{ x: 0, y: 10, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
+          <Player pos={{ x: 0, y: 5, z: 5 }} rot={{ x: 0, y: 0, z: 0 }} />
         )}
 
         <Rabbits />
