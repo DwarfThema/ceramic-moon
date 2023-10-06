@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Suppoerter from "../../public/textures/supportLogo.png";
 import Logo from "../../public/Logo.svg";
+import Link from "next/link";
 
 export default function LoadingScreen() {
   const { progress, loaded } = useProgress();
@@ -31,11 +32,13 @@ export default function LoadingScreen() {
         {Math.floor((loaded / 28) * 100)}%
       </div>
       <Image src={Logo} alt="logo" className="md:w-[23%] w-[43%]" />
-      <Image
-        src={Suppoerter}
-        alt="support"
+      <Link
+        href="https://www.vivlepark.com"
         className="md:w-[30%] mt-5 w-[80%]"
-      />
+        target="_blank"
+      >
+        <Image src={Suppoerter} alt="support" />
+      </Link>
     </div>
   );
 }
