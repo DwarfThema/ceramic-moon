@@ -1,19 +1,18 @@
 import { useProgress } from "@react-three/drei";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Footer from "./footer";
 
 export default function LoadingScreen() {
   const { progress, loaded } = useProgress();
   const [loading, setLoading] = useState(false);
   const [transitionEnd, setTransitionEnd] = useState(false);
 
-  const audio = new Audio("/bgm.mp3");
   useEffect(() => {
     console.log(loaded);
 
     if (progress >= 100) {
       setLoading(true);
-      audio.play();
       setTimeout(() => {
         setTransitionEnd(true);
       }, 5500);
@@ -31,6 +30,7 @@ export default function LoadingScreen() {
       <div className="xl:pt-36 pt-[50%]">LOADING</div>
       <div className="font-extrabold mb-5">{Math.floor(progress)}%</div>
       <div className="xl:w-[23%] w-[43%] h-[50%]  bg-no-repeat bg-contain bg-[url('/Logo.svg')]" />
+      <Footer />
     </div>
   );
 }
