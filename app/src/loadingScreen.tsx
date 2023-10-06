@@ -1,7 +1,8 @@
 import { useProgress } from "@react-three/drei";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Footer from "./footer";
+import Suppoerter from "../../public/textures/supportLogo.png";
+import Logo from "../../public/Logo.svg";
 
 export default function LoadingScreen() {
   const { progress, loaded } = useProgress();
@@ -9,9 +10,7 @@ export default function LoadingScreen() {
   const [transitionEnd, setTransitionEnd] = useState(false);
 
   useEffect(() => {
-    console.log(loaded);
-
-    if (progress >= 100) {
+    if (loaded >= 28) {
       setLoading(true);
       setTimeout(() => {
         setTransitionEnd(true);
@@ -27,10 +26,16 @@ export default function LoadingScreen() {
         transitionEnd ? "z-0 hidden" : "z-20"
       )}
     >
-      <div className="xl:pt-36 pt-[50%]">LOADING</div>
-      <div className="font-extrabold mb-5">{Math.floor(progress)}%</div>
-      <div className="xl:w-[23%] w-[43%] h-[50%]  bg-no-repeat bg-contain bg-[url('/Logo.svg')]" />
-      <Footer />
+      <div className="xl:pt-36 pt-[20%]">LOADING</div>
+      <div className="font-extrabold mb-5">
+        {Math.floor((loaded / 28) * 100)}%
+      </div>
+      <Image src={Logo} alt="logo" className="md:w-[23%] w-[43%]" />
+      <Image
+        src={Suppoerter}
+        alt="support"
+        className="md:w-[30%] mt-5 w-[80%]"
+      />
     </div>
   );
 }
