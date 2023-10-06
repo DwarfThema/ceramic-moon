@@ -25,9 +25,11 @@ export default function Rabbits({ ...props }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const x = Math.random() * 20 - 10;
+      const x = Math.random() * 2.5 - 1.25;
+      console.log(x);
+
       const y = 10;
-      const z = Math.random() * 20 - 10;
+      const z = Math.random() * 2.5 - 1.25;
       const model = rabbitModels[rabbits.length % 2];
       const rotationY = Math.random() * 360;
 
