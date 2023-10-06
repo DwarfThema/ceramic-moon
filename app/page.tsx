@@ -22,7 +22,6 @@ export default function Home() {
           { name: "sit", keys: ["v"] },
         ]}
       >
-        {/* <Stats /> */}
         <Canvas
           shadows
           className="z-10 h-screen w-screen"

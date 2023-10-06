@@ -7,10 +7,13 @@ export default function LoadingScreen() {
   const [loading, setLoading] = useState(false);
   const [transitionEnd, setTransitionEnd] = useState(false);
 
+  const audio = new Audio("/bgm.mp3");
   useEffect(() => {
     console.log(loaded);
-    if (loaded >= 28) {
+
+    if (progress >= 100) {
       setLoading(true);
+      audio.play();
       setTimeout(() => {
         setTransitionEnd(true);
       }, 5500);
@@ -26,9 +29,7 @@ export default function LoadingScreen() {
       )}
     >
       <div className="xl:pt-36 pt-[50%]">LOADING</div>
-      <div className="font-extrabold mb-5">
-        {Math.floor((loaded / 28) * 100)}%
-      </div>
+      <div className="font-extrabold mb-5">{Math.floor(progress)}%</div>
       <div className="xl:w-[23%] w-[43%] h-[50%]  bg-no-repeat bg-contain bg-[url('/Logo.svg')]" />
     </div>
   );
