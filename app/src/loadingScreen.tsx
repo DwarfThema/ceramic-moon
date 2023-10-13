@@ -1,7 +1,7 @@
 import { useProgress } from "@react-three/drei";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Suppoerter from "../../public/textures/supportLogo.png";
+import Suppoerter from "../../public/textures/Supporter.png";
 import Logo from "../../public/Logo.svg";
 import Link from "next/link";
 
