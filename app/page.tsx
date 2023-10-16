@@ -1,6 +1,6 @@
 "use client";
 
-import { Environment, KeyboardControls, Stats } from "@react-three/drei";
+import { Environment, Html, KeyboardControls, Stats } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MainScene from "./src/mainScene";
 import { Suspense } from "react";
@@ -11,6 +11,9 @@ import LoadingScreen from "./src/loadingScreen";
 export default function Home() {
   return (
     <main className="h-screen w-screen absolute">
+      <div className="h-full w-full text-center flex justify-center items-center absolute text-white z-20">
+        <div>•</div>
+      </div>
       <LoadingScreen />
       <KeyboardControls
         map={[
