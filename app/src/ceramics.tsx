@@ -195,7 +195,6 @@ function Ceramic({
           ref={refFront}
           onClick={() => {
             setClicked(true);
-            console.log("good");
           }}
           material={material}
           geometry={mesh.geometry}
@@ -213,7 +212,6 @@ function Ceramic({
           ref={refBack}
           onClick={() => {
             setClicked(true);
-            console.log("good");
           }}
           material={material}
           geometry={mesh.geometry}

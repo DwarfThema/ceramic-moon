@@ -2,13 +2,7 @@ import { Physics } from "@react-three/rapier";
 import { Ground } from "./ground";
 import { Player } from "./player";
 import Ocean from "./ocean";
-import {
-  BakeShadows,
-  CameraControls,
-  Gltf,
-  SoftShadows,
-  Stars,
-} from "@react-three/drei";
+import { CameraControls, Gltf, SoftShadows, Stars } from "@react-three/drei";
 import Ceramics from "./ceramics";
 import { isMobile } from "react-device-detect";
 import { useEffect, useRef } from "react";
