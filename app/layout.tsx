@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
     url: "https://www.dalmagi.co.kr/",
     images: [
       {
-        url: "/thumbnail.jpeg",
+        url: "/thumbnail.jpg",
         width: 800,
         height: 600,
       },
       {
-        url: "/thumbnail.jpeg",
+        url: "/thumbnail.jpg",
         width: 1800,
         height: 1600,
         alt: "My custom alt",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     title: "https://www.dalmagi.co.kr/",
     description: "THEME-MUSEUM : Dal-Ma-Gi by Donggi Eun",
     creator: "Donggi Eun & Junho Park",
-    images: ["/thumbnail.jpeg"],
+    images: ["/thumbnail.jpg"],
   },
   robots: {
     index: false,
@@ -56,6 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Analytics />
       <body className={inter.className}>{children}</body>
     </html>
   );
