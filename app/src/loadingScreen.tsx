@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Suppoerter from "../../public/textures/Supporter.png";
 import Logo from "../../public/Logo.svg";
 import Link from "next/link";
+import { isMobile } from "react-device-detect";
 
 export default function LoadingScreen() {
   const { progress, loaded } = useProgress();
@@ -55,16 +56,30 @@ export default function LoadingScreen() {
           <Image src={Suppoerter} alt="support" />
         </Link>
       </div>
-      <div
-        className={clsstail(
-          "transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
-          explain ? "opacity-100" : "opacity-0",
-          explainEnd ? "z-0 hidden" : "z-30"
-        )}
-      >
-        스크린을 터치해 화면을돌려 향유하세요 <br />
-        Touch the screen and turn it around
-      </div>
+
+      {isMobile ? (
+        <div
+          className={clsstail(
+            "transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
+            explain ? "opacity-100" : "opacity-0",
+            explainEnd ? "z-0 hidden" : "z-30"
+          )}
+        >
+          스크린을 터치해 화면을돌려 향유하세요 <br />
+          Touch the screen and turn it around
+        </div>
+      ) : (
+        <div
+          className={clsstail(
+            "transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
+            explain ? "opacity-100" : "opacity-0",
+            explainEnd ? "z-0 hidden" : "z-30"
+          )}
+        >
+          WASD키와 마우스를 이용해 향유하세요 <br />
+          Use WASD key and mouse to enjoy
+        </div>
+      )}
     </>
   );
 }

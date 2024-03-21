@@ -7,13 +7,17 @@ import { Suspense } from "react";
 import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
 import { ACESFilmicToneMapping, sRGBEncoding } from "three";
 import LoadingScreen from "./src/loadingScreen";
+import { isMobile } from "react-device-detect";
 
 export default function Home() {
   return (
     <main className="h-screen w-screen absolute">
-      <div className="h-full w-full text-center flex justify-center items-center absolute text-white z-20">
-        <div>•</div>
-      </div>
+      {isMobile ? null : (
+        <div className="h-full w-full text-center flex justify-center items-center absolute text-white z-20">
+          <div>•</div>
+        </div>
+      )}
+
       <LoadingScreen />
       <KeyboardControls
         map={[
