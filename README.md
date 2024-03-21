@@ -7,8 +7,3 @@ Author : Donggi Eun
 ArtUrl : [`Click`](https://dalmagi.co.kr/)
 
 Platform : [`VivleThemeMuseum`](https://vivle-theme-museum-git-master-dwarfthema.vercel.app/)
-
-```bash
-npm run dev
-# to Start
-```
