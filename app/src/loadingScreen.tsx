@@ -38,7 +38,7 @@ export default function LoadingScreen() {
     <>
       <div
         className={clsstail(
-          "transition-opacity ease-in-out duration-[5000ms] absolute bg-[#252525] w-screen h-screen flex flex-col justify-center items-center text-[#DDDDDD] ",
+          "touch-none transition-opacity ease-in-out duration-[5000ms] absolute bg-[#252525] w-screen h-screen flex flex-col justify-center items-center text-[#DDDDDD] ",
           loading ? "opacity-0" : "opacity-100",
           transitionEnd ? "z-0 hidden" : "z-30"
         )}
