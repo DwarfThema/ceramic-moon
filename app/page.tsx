@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="h-screen w-screen absolute">
       {isMobile ? null : (
-        <div className="h-full w-full text-center flex justify-center items-center absolute text-white z-20">
+        <div className="h-full w-full select-none touch-none text-center flex justify-center items-center absolute text-white z-20">
           <div>•</div>
         </div>
       )}
