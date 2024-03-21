@@ -60,7 +60,7 @@ export default function LoadingScreen() {
       {isMobile ? (
         <div
           className={clsstail(
-            "transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
+            "touch-none transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
             explain ? "opacity-100" : "opacity-0",
             explainEnd ? "z-0 hidden" : "z-30"
           )}
@@ -71,7 +71,7 @@ export default function LoadingScreen() {
       ) : (
         <div
           className={clsstail(
-            "transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
+            "touch-none transition-opacity ease-in-out duration-[2000ms] absolute w-screen h-screen flex flex-col justify-center items-center text-[#ffffff] ",
             explain ? "opacity-100" : "opacity-0",
             explainEnd ? "z-0 hidden" : "z-30"
           )}
